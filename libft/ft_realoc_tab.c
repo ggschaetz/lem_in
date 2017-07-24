@@ -6,13 +6,40 @@
 /*   By: gschaetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 14:13:38 by gschaetz          #+#    #+#             */
-/*   Updated: 2017/06/28 11:51:09 by gschaetz         ###   ########.fr       */
+/*   Updated: 2017/07/05 11:04:51 by gschaetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_realoc_tab(char **tab, int size_x, int size_y)
+char	**ft_new_tab(char *str)
+{
+	int		i;
+	char	**tab;
+
+	i = 0;
+	if (!(tab = (char **)malloc(sizeof(char *) * 2)))
+		return (NULL);
+	tab[0] = ft_strdup(str);
+	tab[1] = NULL;
+	return (tab);
+}
+
+void	free_tab(char **tab)
+{
+	int i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		tab[i++] = NULL;
+	}
+	free(tab);
+	tab = NULL;
+}
+
+char	**ft_realoc_tab(char **tab, char *str)
 {
 	int		i;
 	int		j;
@@ -20,26 +47,21 @@ char	**ft_realoc_tab(char **tab, int size_x, int size_y)
 	
 	i = 0;
 	j = 0;
-	if (!(cpy = (char **)malloc(sizeof(char *) * (size_x + 1))))
+	if (!(tab))
+		return (ft_new_tab(str));
+	while (tab[i])
+		i++;
+	if (!(cpy = (char **)malloc(sizeof(char *) * (i + 2))))
 		return (NULL);
-	while (i < size_x)
-		cpy[i++] = ft_memalloc(size_y);
-	cpy[i] = NULL;
 	i = 0;
-	while (tab[i] != '\0')
+	while (tab[i])
 	{
-		j = 0;
-		while (tab[i][j] != '\0')
-		{
-			cpy[i][j] = tab[i][j];
-			j++;
-		}
-		free(tab[i]);
-		tab[i] = NULL;
+		cpy[i] = ft_strdup(tab[i]);
 		i++;
 	}
-	free(tab);
-	tab = NULL;
+	cpy[i++] = ft_strdup(str);
+	cpy[i] = NULL;
+	free_tab(tab);
 	return (cpy);
 }
 

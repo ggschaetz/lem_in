@@ -6,7 +6,7 @@
 /*   By: gschaetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 13:50:18 by gschaetz          #+#    #+#             */
-/*   Updated: 2017/06/27 11:49:51 by gschaetz         ###   ########.fr       */
+/*   Updated: 2017/07/05 16:23:44 by gschaetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,21 @@
 # define LEM_IN_H
 
 #include "../libft/libft.h"
+
+typedef struct		s_ro
+{
+	int				start;
+	int				end;
+	char			*name;
+	int				x;
+	int				y;
+}					t_ro;
+
+typedef struct		s_tu
+{
+	char			*name1;
+	char			*name2;
+}					t_tu;
 
 typedef struct		s_lem
 {
@@ -24,8 +39,17 @@ typedef struct		s_lem
 	int				flag_gnl;
 	int				flag_start;
 	int				flag_end;
+	int				count_room;
+	int				count_tube;
+	int				time_tube;
+	t_ro			**ro;
+	t_tu			**tu;
 }					t_lem;
 
+int					ft_is_comment(char *str);
+int					ft_is_room(char *str);
+int					ft_is_tube(char *str);
+int					ft_check_room(t_lem *st, char *str);
 void				ft_free_struct(t_lem *s);
 int					ft_line_isdigit(char *line);
 void				ft_len_max_line(t_lem *st, char *line);

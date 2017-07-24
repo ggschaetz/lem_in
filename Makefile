@@ -6,7 +6,7 @@
 #    By: gschaetz <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/25 11:05:36 by gschaetz          #+#    #+#              #
-#    Updated: 2017/06/27 11:50:09 by gschaetz         ###   ########.fr        #
+#    Updated: 2017/07/05 16:23:59 by gschaetz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,11 @@ INC = include/lem_in.h
 
 SRC = src/main.c\
 	  src/free.c\
-	  src/checker.c \
+	  src/checker.c\
 	  src/calculate_constant.c\
-	  src/ft_line_isdigit.c
+	  src/ft_line_isdigit.c\
+	  src/room.c\
+	  src/is.c
 
 all: $(NAME)
 

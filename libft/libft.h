@@ -6,7 +6,7 @@
 /*   By: gschaetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:51:15 by gschaetz          #+#    #+#             */
-/*   Updated: 2017/06/26 15:04:20 by gschaetz         ###   ########.fr       */
+/*   Updated: 2017/07/05 11:04:48 by gschaetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char				*ft_iitoa(intmax_t n);
 char				*ft_itoa_base(int val, int base);
 char				*ft_uitoa_base(uintmax_t val, uintmax_t base);
 char				**ft_strsplit(char const *s, char c);
-char				**ft_realoc_tab(char **tab, int size_x, int size_y);
+char				**ft_realoc_tab(char **tab, char *str);
 void				ft_swap(int *a, int *b);
 void				*ft_memset(void *s, int c, size_t n);
 void				*ft_memalloc(size_t size);
