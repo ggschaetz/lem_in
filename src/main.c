@@ -6,7 +6,7 @@
 /*   By: gschaetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 13:49:25 by gschaetz          #+#    #+#             */
-/*   Updated: 2017/07/24 11:10:19 by gschaetz         ###   ########.fr       */
+/*   Updated: 2017/07/25 16:46:41 by gschaetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ void	ft_init_structure(t_lem *st)
 	st->time_tube = 0;
 	if (!(st->tab_line = (char **)malloc(sizeof(char *) + 1)))
 		return ;
+	if (!(st->ro = (t_ro *)malloc(sizeof(t_ro) * 20000)))
+		return ;
+	if (!(st->tu = (t_tu *)malloc(sizeof(t_tu) * 20000)))
+		return ;
 	st->tab_line[0] = NULL;
 }
 
@@ -41,29 +45,31 @@ int		main(void)
 	while (get_next_line(0, &line) > 0)
 	{
 		ft_len_max_line(st, line);
-		//ft_printf("len max = %d\n", st->len_max_line);
-		//ft_printf("nb->row = %d\n", st->nb_row);
-
 		if (ft_checker(st, line) == 1)
 		{
-
 				st->tab_line = ft_realoc_tab(st->tab_line, line);
 				st->nb_row++;
-				//ft_printf("row  = %d\n", st->nb_row);
 		}
 		else
 			break;
-		//ft_printf(" line :%s\n", line);
 		free(line);
 	}
-	int y;
-	y = 0;
-/*	while (st->tab_line[y] != NULL)
+	if (last_check(st) == 0)
 	{
-		ft_printf("tab_line[%d] = %s\n", y, st->tab_line[y]);
-		y++;
+		ft_printf("ERROR\n");
+		ft_free_struct(st);
+		exit(0);
 	}
-	ft_printf("start = %d\n", st->flag_start);*/
+	i= 0;
+	while (i < st->count_room)
+	{		ft_printf("%s %d %d start = %d, end = %d\n", st->ro[i].name, st->ro[i].x, st->ro[i].y, st->ro[i].start, st->ro[i].end);
+i++;
+	}
+	i = 0;
+	while (i < st->count_tube)
+	{		ft_printf("%s-%s\n", st->tu[i].name1, st->tu[i].name2);
+i++;
+	}
 	ft_free_struct(st);
 	return (0);
 }

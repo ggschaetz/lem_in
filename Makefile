@@ -6,7 +6,7 @@
 #    By: gschaetz <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/25 11:05:36 by gschaetz          #+#    #+#              #
-#    Updated: 2017/07/05 16:23:59 by gschaetz         ###   ########.fr        #
+#    Updated: 2017/07/25 15:33:53 by gschaetz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ SRC = src/main.c\
 	  src/calculate_constant.c\
 	  src/ft_line_isdigit.c\
 	  src/room.c\
-	  src/is.c
+	  src/is.c \
+	  src/tube.c \
+	  src/last_check.c
 
 all: $(NAME)
 

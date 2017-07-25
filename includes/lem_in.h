@@ -6,7 +6,7 @@
 /*   By: gschaetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 13:50:18 by gschaetz          #+#    #+#             */
-/*   Updated: 2017/07/05 16:23:44 by gschaetz         ###   ########.fr       */
+/*   Updated: 2017/07/25 17:34:28 by gschaetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,26 @@ typedef struct		s_lem
 	char			**cpy;
 	int				len_max_line;
 	int				nb_row;
+	int				nb_ants;
 	int				flag_gnl;
 	int				flag_start;
 	int				flag_end;
+	int				id_start;
+	int				id_end;
 	int				count_room;
 	int				count_tube;
 	int				time_tube;
-	t_ro			**ro;
-	t_tu			**tu;
+	int				after_start;
+	int				after_end;
+	t_ro			*ro;
+	t_tu			*tu;
 }					t_lem;
 
+int					last_check(t_lem *st);
 int					ft_is_comment(char *str);
 int					ft_is_room(char *str);
 int					ft_is_tube(char *str);
+int					ft_check_tube(t_lem *st, char *line);
 int					ft_check_room(t_lem *st, char *str);
 void				ft_free_struct(t_lem *s);
 int					ft_line_isdigit(char *line);
