@@ -6,7 +6,7 @@
 /*   By: gschaetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:51:15 by gschaetz          #+#    #+#             */
-/*   Updated: 2017/07/05 11:04:48 by gschaetz         ###   ########.fr       */
+/*   Updated: 2017/09/04 17:57:20 by gschaetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+void				**ft_malloc_tab(int size_y, int size_x);
 char				*ft_strdup(char *src);
 char				*ft_strcpy(char *dest, char *src);
 char				*ft_strncpy(char *dest, char *src, size_t n);

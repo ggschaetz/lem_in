@@ -6,7 +6,7 @@
 /*   By: gschaetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 11:42:26 by gschaetz          #+#    #+#             */
-/*   Updated: 2017/07/25 17:28:43 by gschaetz         ###   ########.fr       */
+/*   Updated: 2017/09/06 17:14:42 by gschaetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int			ft_check_nb_ants(char *line, t_lem *st)
 	int i;
 
 	i = 0;
-	//ft_printf("test ants nb\n");
 	while (line[i])
 	{
 		if (ft_isdigit(line[i]) == 0)
@@ -25,61 +24,20 @@ int			ft_check_nb_ants(char *line, t_lem *st)
 		i++;
 	}
 	st->nb_ants = ft_atoi(line);
+	ft_printf("%d\n", st->nb_ants);
 	return (1);
 }
 
-/*int			ft_check_end_isdigit(char *str)
+void		ft_free_tab(char **tab)
 {
 	int i;
 
 	i = 0;
-	while (str[i] != ' ' && str[i] != '\0')
-	{
-		ft_printf("i = %d\n", i);
-		i++;
-	}
-	if (str[i] == '\0')
-		return (0);
-	i++;
-	while (str[i] != ' ' && str[i] != '\0')
-	{
-		if (ft_isdigit(str[i++]) == 0)
-			return (0);
-	}
-	if (str[i] == '\0')
-		return (0);
-	i++;
-	while (str[i] != '\0')
-	{
-		if (ft_isdigit(str[i++]) == 0)
-			return (0);
-	}
-	return (1);
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
+	tab = NULL;
 }
-
-int			ft_check_tube(t_lem *st, char *line)
-{
-	char	**tab;
-	int		i;
-	int		exist;
-
-	i = 0;
-	exist = 0;
-	tab = ft_strsplit(line, '-');
-	while (tab[i++] != NULL)
-	if (i != 3)
-		return (0);
-	i= 0;
-	while (i < st->count_room)
-	{
-		if (ft_strcmp(tab[0], st->ro[i].name) == 0 || ft_strcmp(tab[2], st->ro[i].name) == 0)
-			exist++;
-		i++;
-	}
-	if (exist == 2)
-		return (1);
-	return (0);
-}*/
 
 int			ft_check_start_end(t_lem *st, char *line)
 {
@@ -97,6 +55,7 @@ int			ft_check_start_end(t_lem *st, char *line)
 		st->flag_end++;
 		st->after_end = 1;
 	}
+	ft_printf("%s\n", line);
 	return (1);
 }
 
@@ -120,8 +79,9 @@ int			ft_checker(t_lem *st, char *line)
 		return (0);
 	if (st->nb_row == 0 && ft_check_nb_ants(line, st) != 1)
 		return (0);
-
 	id = ft_identifi(line, st);
+	if (id == 0 && (st->after_start != 0 || st->after_end != 0))
+		return (0);
 	if (id == 1 && ft_check_start_end(st, line) == 0)
 		return (0);
 	if (id == 2 && ft_check_room(st, line) == 0)
@@ -130,4 +90,3 @@ int			ft_checker(t_lem *st, char *line)
 		return (0);
 	return (1);
 }
-

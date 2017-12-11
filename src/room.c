@@ -6,7 +6,7 @@
 /*   By: gschaetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 15:02:51 by gschaetz          #+#    #+#             */
-/*   Updated: 2017/07/25 17:28:59 by gschaetz         ###   ########.fr       */
+/*   Updated: 2017/09/06 16:54:56 by gschaetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,10 @@ void		ft_stock_info_room(t_lem *st, char **tab)
 	int i;
 
 	i = 0;
-	/*ft_printf("after_start = %d, end = %d\n", st->after_start, st->after_end);
-	while (tab[i] != NULL)
-	{
-		ft_printf("tab[%i] = %s\n", i, tab[i]);
-		i++;
-	}*/
 	st->ro[st->count_room].name = ft_strdup(tab[0]);
 	st->ro[st->count_room].x = ft_atoi(tab[1]);
 	st->ro[st->count_room].y = ft_atoi(tab[2]);
+	st->ro[st->count_room].pass = 0;
 	if (st->after_start == 1)
 	{
 		st->ro[st->count_room].start = 1;
@@ -40,7 +35,7 @@ void		ft_stock_info_room(t_lem *st, char **tab)
 	}
 }
 
-int		ft_check_format_room(char **tab, char *str)
+int			ft_check_format_room(char **tab, char *str)
 {
 	int		i;
 	int		j;
@@ -48,8 +43,8 @@ int		ft_check_format_room(char **tab, char *str)
 	i = 0;
 	while (tab[i] != NULL)
 		i++;
-	//ft_printf("test = %c\n", tab[0][0]);
-	if (ft_strchr(str, '-') != NULL || tab[0][0] == 'L' || i != 3 || tab[0][0] == '#')
+	if (ft_strchr(str, '-') != NULL || tab[0][0] == 'L' ||\
+		i != 3 || tab[0][0] == '#')
 		return (0);
 	i = 1;
 	while (tab[i] != NULL)
@@ -57,8 +52,7 @@ int		ft_check_format_room(char **tab, char *str)
 		j = 0;
 		while (tab[i][j] != '\0')
 		{
-			//ft_printf("char = %c\n", tab[i][j]);
-			if (ft_isdigit(tab[i][j] != 1))
+			if (ft_isdigit(tab[i][j]) != 1)
 				return (0);
 			j++;
 		}
@@ -93,10 +87,18 @@ int			ft_check_room(t_lem *st, char *str)
 		return (0);
 	tab = ft_strsplit(str, ' ');
 	if (ft_check_format_room(tab, str) == 0)
+	{
+		ft_free_tab(tab);
 		return (0);
+	}
 	if (ft_check_duplicate_room(tab, st) == 0)
+	{
+		ft_free_tab(tab);
 		return (0);
+	}
 	ft_stock_info_room(st, tab);
 	st->count_room++;
+	ft_free_tab(tab);
+	ft_printf("%s\n", str);
 	return (1);
 }

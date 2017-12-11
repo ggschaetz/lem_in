@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_malloc_tab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gschaetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 11:27:17 by gschaetz          #+#    #+#             */
-/*   Updated: 2017/09/06 14:29:32 by gschaetz         ###   ########.fr       */
+/*   Created: 2017/09/04 16:17:32 by gschaetz          #+#    #+#             */
+/*   Updated: 2017/09/06 13:44:28 by gschaetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft/libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+void		**ft_malloc_tab(int size_y, int size_x)
 {
-	char	*dest;
-	size_t	i;
-	int		j;
+	void	**tab;
+	int		i;
 
-	i = start;
-	j = 0;
-	if (!s)
+	tab = NULL;
+	i = 0;
+	if (!(tab = (void **)malloc(sizeof(void *) * (size_x + 1))))
 		return (NULL);
-	if (!(dest = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	while (i < (start + len))
+	while (i < size_x)
 	{
-		dest[j] = s[i];
+		if (!(tab[i] = (void *)malloc(sizeof(void) * (size_y + 1))))
+			return (NULL);
 		i++;
-		j++;
 	}
-	dest[j] = '\0';
-	return (dest);
+	tab[i] = NULL;
+	return (tab);
 }

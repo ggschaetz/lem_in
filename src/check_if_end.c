@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   check_if_end.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gschaetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 11:27:17 by gschaetz          #+#    #+#             */
-/*   Updated: 2017/09/06 14:29:32 by gschaetz         ###   ########.fr       */
+/*   Created: 2017/09/06 15:14:10 by gschaetz          #+#    #+#             */
+/*   Updated: 2017/09/06 15:31:30 by gschaetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/lem_in.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+int			ft_check_if_end(t_lem *st)
 {
-	char	*dest;
-	size_t	i;
-	int		j;
+	int		i;
 
-	i = start;
-	j = 0;
-	if (!s)
-		return (NULL);
-	if (!(dest = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	while (i < (start + len))
+	i = 0;
+	while (i < st->id_pr)
 	{
-		dest[j] = s[i];
+		if (ft_strcmp(st->pr[i].father, st->ro[st->id_end].name) == 0 || \
+			ft_strcmp(st->pr[i].sommet, st->ro[st->id_end].name) == 0)
+			return (1);
 		i++;
-		j++;
 	}
-	dest[j] = '\0';
-	return (dest);
+	return (0);
 }

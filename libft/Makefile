@@ -6,7 +6,7 @@
 #    By: gschaetz <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/10 13:49:44 by gschaetz          #+#    #+#              #
-#    Updated: 2017/06/26 15:10:56 by gschaetz         ###   ########.fr        #
+#    Updated: 2017/09/04 16:19:42 by gschaetz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRC = ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c ft_strncat.c \
 	  ft_printf/ft_appli3.c ft_printf/ft_s.c ft_printf/ft_c.c \
 	  ft_printf/ft_percent.c ft_printf/ft_lc.c ft_printf/ft_uatoi.c \
 	  ft_printf/ft_oct_lc.c ft_printf/ft_ls.c ft_printf/ft_d1.c \
-	  ft_printf/ft_s1.c ft_printf/ft_add_ox1.c ft_realoc_tab.c
+	  ft_printf/ft_s1.c ft_printf/ft_add_ox1.c ft_realoc_tab.c \
+	  ft_malloc_tab.c
 
 
 PO =  ft_strdup.o ft_strcpy.o ft_strncpy.o ft_strcat.o ft_strncat.o \
@@ -67,7 +68,7 @@ PO =  ft_strdup.o ft_strcpy.o ft_strncpy.o ft_strcat.o ft_strncat.o \
 	  ft_printf/ft_s.o ft_printf/ft_c.o ft_printf/ft_percent.o \
 	  ft_printf/ft_lc.o ft_printf/ft_uatoi.o ft_printf/ft_oct_lc.o \
 	  ft_printf/ft_ls.o ft_printf/ft_d1.o ft_printf/ft_s1.o \
-	  ft_printf/ft_add_ox1.o ft_realoc_tab.o
+	  ft_printf/ft_add_ox1.o ft_realoc_tab.o ft_malloc_tab.o
 
 all: $(NAME)
 

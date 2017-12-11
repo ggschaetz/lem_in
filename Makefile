@@ -6,7 +6,7 @@
 #    By: gschaetz <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/25 11:05:36 by gschaetz          #+#    #+#              #
-#    Updated: 2017/07/25 15:33:53 by gschaetz         ###   ########.fr        #
+#    Updated: 2017/09/06 16:50:13 by gschaetz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,12 @@ SRC = src/main.c\
 	  src/room.c\
 	  src/is.c \
 	  src/tube.c \
-	  src/last_check.c
+	  src/last_check.c \
+	  src/resolv.c \
+	  src/way.c \
+	  src/ft_print_rez.c \
+	  src/check_if_end.c \
+	  src/bfs.c
 
 all: $(NAME)
 
@@ -42,6 +47,7 @@ clean:
 fclean: clean
 	make -C libft fclean
 	rm $(NAME)
+	rm -rf *.dSYM
 
 re: fclean all
 	
