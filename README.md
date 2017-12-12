@@ -9,7 +9,7 @@ Run make, an executable called lem_in
 
 #usage
 ```sh
-./Lem_in < map/*
+./Lem_in < maps/*
 ```
 
 # example
