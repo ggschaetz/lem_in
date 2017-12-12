@@ -14,8 +14,10 @@ Run make, an executable called lem_in
 
 # example
 
-##Map
+Map
+
 ![Alt text](./screen_for_readme/map.png?raw=true "Map")
 
-##Run
+Run
+
 ![Alt text](./screen_for_readme/result.png?raw=true "result")
