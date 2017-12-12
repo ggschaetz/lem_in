@@ -11,3 +11,11 @@ Run make, an executable called lem_in
 ```sh
 ./Lem_in < map/*
 ```
+
+# example
+
+##Map
+![Alt text](./screen_for_readme/map.png?raw=true "Map")
+
+##Run
+![Alt text](./screen_for_readme/result.png?raw=true "result")
